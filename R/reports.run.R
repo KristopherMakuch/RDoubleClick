@@ -24,7 +24,7 @@
 reports.run <- function(profileId, reportId){
 
   req.url <- paste0("https://www.googleapis.com/dfareporting/v3.0/userprofiles/",profileId,"/reports/",reportId,"/run")
-  response <- fromJSON(api.request(req.url,querystring="synchronous=true",method='GET'))
+  response <- fromJSON(api.request(req.url,querystring="synchronous=true",method='POST'))
   
   # now that the report has run, get the report
   return(files.get(response$id,response$reportId))
